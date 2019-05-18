@@ -1,0 +1,61 @@
+extends layout_coach
+block content
+  h1 #{title}
+  form(method='POST', action='/activities/add')
+  
+    div.row
+      div.col-md-6
+        #form-group
+          
+          label Activity:
+          input.form-control(name='name', type='text', required='required', id='activity')        
+          br 
+          label Price:
+          input.form-control(name='price', type='text', required='required', id='price')
+          br  
+          input.btn.btn-primary(type='submit', value='Submit')   
+      div.col-md-6
+        table.table.table-striped.table-dark.table-bordered
+          thead
+            tr
+              th
+                label Activities           
+          tbody
+            tr 
+              th
+                each activity, i in activities
+                  a(href="#" data-toggle="modal" data-target="#myModal"+activity._id)
+                    p(value=activity.name) #{activity.name}
+
+          
+
+          // Modal
+          each activity, i in activities
+            div(id="myModal"+activity._id, class="modal fade", role="dialog")
+
+              .modal-dialog
+                // Modal content
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal') ×
+                    h4.modal-title #{activity.name}
+                  .modal-body
+                    form(method='POST', action='/activities/edit/'+activity._id)
+                      #form-group
+                        label Activity:
+                        input.form-control(name='name1', type='text' value=activity.name)
+                      #form-group
+                        label Price:
+                        input.form-control(name='price1', type='text' value=activity.price)
+                        input.form-control(name='id1', type='hidden' value=activity._id)
+                      
+                      br  
+                      input.btn.btn-primary(type='submit', value='Save changes')
+                      span &nbsp;&nbsp;  
+                      a.btn.btn-danger.delete-activity(href='#', data-id=activity._id) Delete
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close      
+      
+            
+
+ 

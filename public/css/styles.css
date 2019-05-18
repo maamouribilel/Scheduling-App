@@ -1,0 +1,168 @@
+.alert-error{
+  color:#a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color:#3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.bg-color{
+	padding: 13px;
+	background-color: #101010;
+	color: #9d9d9d;
+}
+
+.agenda {  }
+
+/* Dates */
+.agenda .agenda-date { width: 170px; }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em;
+}
+ .confirmed{
+  color: green;
+ }
+
+ .supprimer{
+  color: red;
+ }
+table th{
+  text-align: center;
+}
+table td{
+  text-align: center;
+}
+/* Times */
+.agenda .agenda-time { width: 140px; }
+
+
+/* Events */
+.agenda .agenda-events {  }
+.agenda .agenda-events .agenda-event {  }
+
+@media (max-width: 767px) {
+
+}
+
+.service-process {
+    background-color: #fafafa;
+    position: relative;
+}
+.wshipping-content-block {
+    padding: 80px 0px;
+}
+.service-process::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border-top: 1px dashed #cccccc;
+    border-bottom: 1px dashed #fff;
+    width: 100%;
+}
+*::after, *::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+.section-title h2 {
+    margin-top: 0px;
+    text-transform: uppercase;
+    color: #444444;
+}
+h2 {
+    font-size: 32px;
+    font-weight: 400;
+}
+p {
+    margin: 0 0 10px;
+}
+.process-row {
+    padding-top: 40px;
+}
+.process-step::before {
+    position: absolute;
+    right: -123px;
+    width: 110px;
+    height: 2px;
+    background-color: #eb0028;
+    content: "";
+    top: 80px;
+    display: block;
+}
+
+.process-icon {
+    width: 164px;
+    text-align: center;
+    height: 164px;
+    float: left;
+    border-radius: 100%;
+    background-color: #fff;
+    border: 2px solid #eb0028;
+    position: relative;
+    padding-top: 44px;
+    margin-bottom: 10px;
+}
+.process-icon span {
+    width: 56px;
+    height: 56px;
+    background-color: #eb0028;
+    border: 2px solid #fff;
+    color: #fff;
+    line-height: 56px;
+    font-size: 28px;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    margin-top: -30px;
+    border-radius: 100%;
+    font-weight: 700;
+}
+.process-step p {
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    clear: both;
+}
+.process-step p {
+    margin-bottom: 0px;
+}
+p {
+    margin: 0 0 10px;
+}
+.process-step {
+    float: left;
+    width: 164px;
+    margin-right: 14%;
+    position: relative;
+}
+.process-step:last-child {
+    margin-right: 0px;
+}
+.process-step:last-child::before
+ {
+display:none;
+}
+body{
+  font-family: "Arial" !important;
+}
+li{
+  font-family: "Arial" !important;
+}

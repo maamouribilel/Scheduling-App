@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= appointment.title
+  h5 Written By  #{author}
+  br
+  p= appointment.body
+  hr
+  if user
+    if user.id == appointment.author
+      a.btn.btn-success(href='/appointment/edit/'+appointment._id) Edit
+      span &ensp;&ensp;
+      a.btn.btn-danger.delete-appointment(href='#', data-id=appointment._id) Delete

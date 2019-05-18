@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Calendar
+    link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/css/styles.css")
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') Coach-Calendar
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+
+            if user
+              li
+                a(href='/home') Home
+              li
+                a(href='/appointment/add') Add Appointment &nbsp;
+                  span.glyphicon.glyphicon-plus
+            else
+              li
+                a(href='/') Home                
+          ul.nav.navbar-nav.navbar-right
+            if user
+              li 
+                a(href='#')
+                  i.glyphicon.glyphicon-user
+                  span  Welcome #{user.name}
+              li 
+                a(href='/users/logout')
+                  i.glyphicon.glyphicon-log-out
+                  span  Logout
+            else
+              li
+                a(href='/users/register') Register
+              li
+                a(href='/users/login') Login
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class='alert alert-danger') #{error.msg}
+      block content
+      br
+      hr
+    footer.bg-color
+      center
+        strong copyright &copy 2017
+    script(src='/bower_components/jquery/dist/jquery.js')      
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.js')      
+    script(src='/js/main.js')

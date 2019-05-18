@@ -1,0 +1,44 @@
+extends layout_coach
+block content
+  .container
+   .row
+     .col-md-6
+       script(src="/js/cal.js")
+       div#calendar
+       h2  Scheduled sessions
+       table.table.table-striped.table-condensed.table-bordered
+         thead
+           tr
+             th Session's date
+             th Activity
+             th Places
+             th Nbr participants
+         tbody
+          each appointment, i in appointments
+           tr
+             td  #{appointment.day.toDateString()} at #{appointment.time} O'clock
+             td  #{appointment.activity}
+             td  #{appointment.place}
+             td  #{appointment.parti}
+  
+     .col-md-6
+       h2 Appointments on hold :
+       table.table.table-striped.table-condensed.table-bordered
+         thead
+           tr
+             th Session's date
+             th Activity
+             th Places
+             th Manage
+         tbody
+          each rv, i in rvs
+           tr
+             td  #{rv.day.toDateString()} at #{rv.time} O'clock
+             td  #{rv.activity}
+             td  #{rv.place}
+             td
+               a.confirm-appointment.glyphicon.glyphicon-ok-sign(href="#",title="Confirm appointment",data-id=rv._id)
+               span &nbsp; &nbsp;  
+               a.delete-rv.glyphicon.glyphicon-remove-sign(href="#",title="Cancel appointment",data-id=rv._id)
+
+                                

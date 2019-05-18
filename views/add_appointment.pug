@@ -1,0 +1,34 @@
+extends layout
+block content
+  h1 #{title}
+  form(method='POST', action='/appointment/add')
+    #form-group
+      input.form-control(name='user', type='hidden', value=user._id , required='required')  
+      input.form-control(name='state', type='hidden', value='0' , required='required')  
+      label Day:
+      input.form-control(name='day', type='date', required='required', id='day')
+      br 
+      label Time:
+      select.form-control(name='time' required='required')
+        option(disabled) -- Morning Session --
+        option(value='8') 8h -> 9h30
+        option(value='10') 10h -> 11h30
+        option(disabled) -- Afternoon Session --
+        option(value='14') 14h -> 15h30
+        option(value='16') 16h -> 17h30
+      br
+      label Participants:
+      input.form-control(name='parti', type='number', max="10" , min="1" , required='required')
+      br
+      label Activities:
+      select.form-control(name='activity' required='required')
+        each activity, i in activities  
+          option(value=activity.name) #{activity.name}    
+      br
+      label Place:
+      select.form-control(name='place' required='required')
+        each parc, i in parcs  
+          option(value=parc.name) #{parc.name}  
+
+    br    
+    input.btn.btn-primary(type='submit', value='Submit')    

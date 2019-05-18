@@ -1,0 +1,57 @@
+extends layout_coach
+block content
+  h1 #{title}
+  form(method='POST', action='/parcs/add')
+  
+    div.row
+      div.col-md-6
+        #form-group
+          
+          label Parc:
+          input.form-control(name='name', type='text', required='required', id='parc')        
+          br 
+          
+          input.btn.btn-primary(type='submit', value='Submit')   
+      div.col-md-6
+        table.table.table-striped.table-dark.table-bordered
+          thead
+            tr
+              th
+                label Parcs          
+          tbody
+            tr 
+              th
+                each parc, i in parcs
+                  a(href="#" data-toggle="modal" data-target="#myModal"+parc._id)
+                    p(value=parc.name) #{parc.name}
+
+          
+
+          // Modal
+          each parc, i in parcs
+            div(id="myModal"+parc._id, class="modal fade", role="dialog")
+
+              .modal-dialog
+                // Modal content
+                .modal-content
+                  .modal-header
+                    button.close(type='button', data-dismiss='modal') ×
+                    h4.modal-title #{parc.name}
+                  .modal-body
+                    form(method='POST', action='/parcs/edit/'+parc._id)
+                      #form-group
+                        label Parc:
+                        input.form-control(name='name1', type='text' value=parc.name)
+        
+                        input.form-control(name='id1', type='hidden' value=parc._id)
+                      
+                      br  
+                      input.btn.btn-primary(type='submit', value='Save changes')
+                      span &nbsp;&nbsp;  
+                      a.btn.btn-danger.delete-parc(href='#', data-id=parc._id) Delete
+                  .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close      
+      
+            
+
+ 

@@ -1,0 +1,50 @@
+extends layout
+block content
+ .container
+  h2 Your training sessions :
+
+  hr
+  .agenda
+    .table-responsive
+      table.table.table-condensed.table-bordered
+        thead
+          tr
+            th Date
+            th Time
+            th Place
+            th Activity
+            th State
+            th Cancel
+        tbody
+          // Single event in a single day
+          each appointment, i in appointments
+            tr
+              td.agenda-date(rowspan='1')
+                .dayofmonth #{appointment.day.getDate()}
+                .dayofweek #{appointment.day.toDateString()}
+              td.agenda-time
+                | #{appointment.time} O'clock
+              td.agenda-events
+                .agenda-event
+                  i.glyphicon.glyphicon-map-marker.text-muted(title='Repeating event')
+                  |  &nbsp;  #{appointment.place} 
+              td.agenda-events
+                .agenda-event
+                  i.glyphicon.glyphicon-road.text-muted(title='Repeating event')
+                  |  &nbsp;  #{appointment.activity} 
+              td.agenda-events
+                .agenda-event
+                if appointment.state=="0"
+                  i.glyphicon.glyphicon-option-horizontal.confirmed.text-muted(title='Repeating event')
+                  |  &nbsp; Not Confirmed
+                else
+                  i.glyphicon.glyphicon-ok.confirmed.text-muted(title='Delete appointment')
+                  |  &nbsp; Confirmed                    
+              td.agenda-events
+                .agenda-event
+                if appointment.state=="0"  
+                  a.glyphicon.glyphicon-remove-circle.delete-appointment(href='#', data-id=appointment._id)
+                    //i.glyphicon.glyphicon-remove-circle.supprimer.text-muted(title='Repeating event')    
+                else
+                  i.glyphicon.glyphicon-ban-circle.confirmed.text-muted(title='You cant cancel')
+                  |  &nbsp;                                   
